@@ -39,4 +39,4 @@ jobs:
           pull_request_body: 'New Crowdin translations pulled by [Crowdin GH Action](https://github.com/crowdin/github-action)'
           pull_request_base_branch_name: 'master'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
