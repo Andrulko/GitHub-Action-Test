@@ -25,7 +25,8 @@ jobs:
           project_id: ${{ secrets.CROWDIN_PROJECT_ID }}
           token: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
           base_url: https://andriy.crowdin.com
-          upload_sources: false
+          upload_sources: true
+          upload_sources_args: --preserve-hierarchy
           upload_translations: false
           # upload_translations_args: ''
           download_sources: true
