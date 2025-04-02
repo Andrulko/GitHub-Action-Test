@@ -20,7 +20,7 @@ jobs:
       - name: Crowdin action - push b2b
         uses: crowdin/github-action@v2
         with:
-          source: '/packages/ems-quotation/web-app/src/locales/en.json'                                       # Sources pattern
+          source: 'packages/ems-quotation/web-app/src/locales/en.json'                                       # Sources pattern
           translation: '/%original_path%/%two_letters_code%.json'    # Translations pattern
           project_id: ${{ secrets.CROWDIN_PROJECT_ID }}
           token: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
@@ -41,7 +41,7 @@ jobs:
       - name: Crowdin action - push mailing
         uses: crowdin/github-action@v2
         with:
-          source: '/packages/ems-quotation/web-app/src/locales/mailing.en.json'                                       # Sources pattern
+          source: 'packages/ems-quotation/web-app/src/locales/mailing.en.json'                                       # Sources pattern
           translation: '/%original_path%/mailing.%two_letters_code%.json'    # Translations pattern
           project_id: ${{ secrets.CROWDIN_PROJECT_ID }}
           token: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
