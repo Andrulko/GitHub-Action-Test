@@ -17,11 +17,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Crowdin action - pull b2b
+      - name: Crowdin action - push b2b
         uses: crowdin/github-action@v2
         with:
-          source: 'packages/ems-quotation/web-app/src/locales/en.json'                                       # Sources pattern
-          translation: '%original_path%/%two_letters_code%.json'    # Translations pattern
+          source: '/packages/ems-quotation/web-app/src/locales/en.json'                                       # Sources pattern
+          translation: '/%original_path%/%two_letters_code%.json'    # Translations pattern
           project_id: ${{ secrets.CROWDIN_PROJECT_ID }}
           token: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
           base_url: https://andriy.crowdin.com
@@ -29,7 +29,28 @@ jobs:
           upload_sources_args: --preserve-hierarchy
           upload_translations: false
           # upload_translations_args: ''
-          download_sources: true
+          download_sources: false
+          download_sources_args: --preserve-hierarchy
+          download_translations: true
+          download_translations_args: --skip-untranslated-strings
+          localization_branch_name: l10n-crowdin-master-b2b
+          create_pull_request: true
+          pull_request_title: 'New Crowdin Translations B2B'
+          pull_request_body: 'New Crowdin translations pulled by [Crowdin GH Action](https://github.com/crowdin/github-action)'
+          pull_request_base_branch_name: 'master'
+      - name: Crowdin action - push mailing
+        uses: crowdin/github-action@v2
+        with:
+          source: '/packages/ems-quotation/web-app/src/locales/mailing.en.json'                                       # Sources pattern
+          translation: '/%original_path%/mailing.%two_letters_code%.json'    # Translations pattern
+          project_id: ${{ secrets.CROWDIN_PROJECT_ID }}
+          token: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          base_url: https://andriy.crowdin.com
+          upload_sources: true
+          upload_sources_args: --preserve-hierarchy
+          upload_translations: false
+          # upload_translations_args: ''
+          download_sources: false
           download_sources_args: --preserve-hierarchy
           download_translations: true
           download_translations_args: --skip-untranslated-strings
